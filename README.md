@@ -1,8 +1,6 @@
 Vending Machine
 =====
 
-Clone this repo and then run `npm install`
-
 ## What do we need?
 
 - https://nodejs.org/download/
