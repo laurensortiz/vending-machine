@@ -1,0 +1,93 @@
+/* ==========================================================================
+   Border-box all the things!
+   ========================================================================== */
+
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  &::-moz-focus-inner {
+    border: 0;
+  }
+}
+a:focus,input:focus,textarea:focus, *:focus {outline:none;}
+::-moz-focus-inner {border:0;}
+/* ==========================================================================
+   Variables
+   ========================================================================== */
+$imgPath : '../images/';
+//Colors
+$colorGray : #808080;
+$colorYellow : #e4bd08;
+$colorRed : #e01c2f;
+$machineColor : #4c5154;
+$coinGray : #5c5c5c;
+$coinWhite : #e1cca1;
+$keyBoardIndicatorBg : #b7e7ae;
+$keyBoardIndicatorFont : #477b3d;
+$keyBoardButtonBg : #efefef;
+$slotCoinBorder :#2d2d2d;
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+body {
+  font-size: 14px;
+  font-family: helvetica, arial, sans-serif;
+}
+h3{
+  text-transform: uppercase;
+
+  span{
+    @include font-size(12,12,0,20);
+  }
+}
+input[type="text"]{
+  font-family: 'digital-7mono';
+
+}
+[class*='col-'] {
+  float: left;
+  position: relative;
+}
+
+.col-1-2 {
+  width: 50%;
+  padding: 10px;
+}
+.col-1-8 {
+  width: 12.5%;
+}
+.col-7-8 {
+  width: 87.5%;
+}
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+.main-header{
+  text-align: center;
+}
+/* ==========================================================================
+   General
+   ========================================================================== */
+.container{
+  @include clearfix;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.main-footer{
+  text-align: center;
+
+  a{
+    color: $colorGray;
+    text-decoration: none;
+  }
+}

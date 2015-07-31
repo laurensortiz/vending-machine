@@ -1,0 +1,55 @@
+<div class="vending-machine">
+  <div class="col-1-2">
+
+    <div class="products-container">
+      <!--Product-->
+      <div ng-repeat="product in allProducts" class="product-item" ng-class="{'product-dispatch' : $index == productSelected}">
+        <div class="product-item__type"></div>
+        <div class="product-item__price">{{product.price}}</div>
+        <div class="product-item__position-indicator">{{$index + 1}}</div>
+      </div>
+      <!--/Product-->
+
+    </div>
+    <div class="product-dispenser"></div>
+  </div>
+
+  <div class="col-1-2">
+    <div class="screen">
+      <input type="text" value="{{credit}}" readonly/>
+    </div>
+    <div class="coins-container">
+      <h3>Insert Coin <span>(by Click)</span></h3>
+      <div class="col-1-8">
+        <div class="coin--slot"></div>
+      </div>
+      <div class="col-7-8">
+        <div class="coins">
+          <button ng-click="coinSelected(0.01)" class="coin--value-1">1¢</button>
+          <button ng-click="coinSelected(0.05)" class="coin--value-5">5¢</button>
+          <button ng-click="coinSelected(0.1)" class="coin--value-10">10¢</button>
+          <button ng-click="coinSelected(0.25)" class="coin--value-25">25¢</button>
+          <button ng-click="coinSelected(0.50)" class="coin--value-50">50¢</button>
+          <button ng-click="coinSelected(1.0)" class="coin--value-100">1$</button>
+        </div>
+      </div>
+    </div>
+    <div class="keyboard-container">
+      <h3>Select Product</h3>
+      <div class="screen-indicator">
+        <input type="text" value="{{status}}" placeholder="Are you hungry?" readonly/>
+      </div>
+      <div class="col-1-2">
+        <div class="keyboard">
+          <button ng-repeat="btn in keyboardButtonsNum" ng-click="selectProductByKey($index)">{{$index + 1}}</button>
+        </div>
+      </div>
+      <div class="col-1-2">
+        <div ng-class="{'has-change': showCoinChange}" class="change-slot">
+          <button ng-click="showCoinChange = false"  class="change--coin"></button>
+          <button ng-show="userHasChange" ng-click="dispenseChange()" class="btn_take-change">Take Change</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+/*
+* Set the font-size
+* @include font-size();
+*/
+@mixin font-size($fontSize:14,$lineHeight:auto,$vaValue:auto, $fontBase:14){
+  $sizeToEm : ($fontSize/$fontBase)+em;
+  $va : ($vaValue/1000)+em;
+  font-size: $sizeToEm;
+  letter-spacing: $va;
+  @if $lineHeight != auto{
+    line-height : ($lineHeight/$fontSize)+em;
+  }
+  @else{
+    line-height : ($fontSize/$fontSize)+em
+  }
+}
+/*
+ * Mixin for clearfix
+ * @include clearfix;
+*/
+@mixin clearfix {
+  &:before,
+  &:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+/*
+ * Mixin for pseudo-classes
+ * @include absolute-content;
+*/
+@mixin absolute-content(){
+  content: "";
+  position: absolute;
+  width: 100%;
+}

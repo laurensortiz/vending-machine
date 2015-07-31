@@ -1,0 +1,326 @@
+.vending-machine{
+  width: 95%;
+  max-width: 800px;
+  min-height: 80vh;
+  margin: auto;
+  background-color: $machineColor;
+  position: relative;
+  border-radius: 5px;
+  @include clearfix;
+}
+.products-container{
+  width: 100%;
+  height: 60vh;
+  background-color: #000;
+  text-align: center;
+  position: relative;
+  box-shadow: inset 0 0 10px rgba(0,0,0,.6);
+  overflow: hidden;
+  &:after{
+    @include absolute-content;
+    height: 100%;
+
+  }
+
+  &:after{
+    top: -65%;
+    left: -15%;
+    height: 200%;
+    width: 80%;
+    background-color: rgba(255,255,255,.2);
+    transform: rotate(30deg);
+    box-shadow: 346px 5px 0px rgba(0,0,0,.2);
+    z-index: 10;
+
+  }
+
+  .product-item{
+    width: 20%;
+    display: inline-block;
+    margin: 2px;
+    position: relative;
+    .product-item__type{
+      width: 100%;
+      height: 10vh;
+      background-repeat: no-repeat;
+      background-size: auto 100%;
+      background-position: center;
+      margin: 20% 0 5%;
+      position: relative;
+
+    }
+    .product-item__price{
+      background-color: #fff;
+      font-weight: bold;
+      padding: 5px;
+    }
+    .product-item__position-indicator{
+      background-color:$colorRed;
+      color: $colorYellow;
+      @include font-size(18,40,0);
+      border-radius: 20px;
+      width: 40px;
+      height: 40px;
+      margin: 10px auto;
+    }
+
+    //Show PDO Products
+    &:nth-of-type(1) .product-item__type{
+      background-image: url(#{$imgPath}product-1.jpg);
+    }
+    &:nth-of-type(2) .product-item__type{
+
+    }
+    &:nth-of-type(3) .product-item__type{
+      background-image: url(#{$imgPath}product-3.jpg);
+    }
+    &:nth-of-type(4) .product-item__type{
+      background-image: url(#{$imgPath}product-4.jpg);
+    }
+    &:nth-of-type(5) .product-item__type{
+      background-image: url(#{$imgPath}product-5.jpg);
+    }
+    &:nth-of-type(6) .product-item__type{
+      background-image: url(#{$imgPath}product-6.jpg);
+    }
+    &:nth-of-type(7) .product-item__type{
+      background-image: url(#{$imgPath}product-7.jpg);
+    }
+    &:nth-of-type(8) .product-item__type{
+      background-image: url(#{$imgPath}product-8.jpg);
+    }
+  }
+
+}
+
+.product-dispenser{
+  width: 100%;
+  height: 15vh;
+  background-color: #090909;
+  margin: 2% 0;
+  position: relative;
+  &:before, &:after{
+    @include absolute-content;
+  }
+  &:before{
+    top: 0;
+    height: 48%;
+    background-color: #161616;
+    box-shadow: 0 5px 5px rgba(0,0,0,.5);
+  }
+  &:after{
+    height: 41%;
+    bottom: 0;
+    background-color: #2d2d2d;
+
+
+  }
+}
+
+.product-dispatch{
+  z-index: 10;
+  .product-item__type{
+    -webkit-animation: productDispatch 3s normal forwards ease-in;
+    -moz-animation: productDispatch 3s normal forwards ease-in;
+    -o-animation: productDispatch 3s normal forwards ease-in;
+    animation: productDispatch 3s normal forwards ease-in;
+  }
+}
+
+.screen{
+  width: 100%;
+  height: 25vh;
+  position: relative;
+  background-color: #bb676f;
+  @include font-size(30,30,0);
+  overflow: hidden;
+  &{
+    font-family: 'digital-7mono';
+  }
+  input, &:before{
+    height: 100%;
+    top: 0;
+    left: 0;
+    padding: 0 20px;
+    @include font-size(40,70,30);
+  }
+  input{
+    width: 100%;
+    position: absolute;
+    background-color: transparent;
+    border: 0;
+    z-index: 2;
+    color: #aa0b1a;
+
+  }
+  &:before{
+    @include absolute-content;
+    content: "8.88";
+
+    color: #95454d;
+    opacity: .2;
+  }
+}
+
+.coins-container{
+  @include clearfix;
+  .coin--slot{
+    width: 30%;
+    height: 15vh;
+    background-color: #000;
+    border: 4px solid $slotCoinBorder;
+
+  }
+  .coins{
+    text-align: center;
+
+    button{
+      display: inline-block;
+      vertical-align: middle;
+      border-radius: 50%;
+      @include font-size(18,18,0);
+      font-weight: bold;
+      box-shadow: 2px 2px 0 rgba(0,0,0,.4);
+      border: 1px solid rgba(0,0,0,.3);
+      color: #000;
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+      &:before{
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255,255,255,.2);
+        border-radius: 50%;
+        top:-10%;
+        left: -10%;
+
+      }
+
+      &:active{
+        box-shadow: none;
+        left: 2px;
+        top: 2px;
+      }
+    }
+    .coin--value-1{
+      background-color: $coinWhite;
+      width: 30px;
+      height: 30px;
+    }
+    .coin--value-5{
+      background-color: $coinGray;
+      width: 40px;
+      height: 40px;
+    }
+    .coin--value-10{
+      background-color: $coinGray;
+      width: 45px;
+      height: 45px;
+    }
+    .coin--value-25{
+      background-color: $coinGray;
+      width: 55px;
+      height: 55px;
+    }
+    .coin--value-50{
+      background-color: $coinGray;
+      width: 60px;
+      height: 60px;
+    }
+    .coin--value-100{
+      background-color: $coinWhite;
+      width: 70px;
+      height: 70px;
+    }
+  }
+}
+
+.keyboard-container{
+  input{
+    @include font-size(20,20,70);
+    border: 0;
+    background-color: $keyBoardIndicatorBg;
+    padding: 5px;
+    width: 100%;
+    color: $keyBoardIndicatorFont;
+    font-weight: bold;
+  }
+
+  .keyboard{
+    padding: 8px;
+    button{
+      width: 10%;
+      min-width: 30px;
+      height: 5vh;
+      margin: 1%;
+      border-radius: 5px;
+      background-color: $keyBoardButtonBg;
+      cursor: pointer;
+    }
+  }
+  .change-slot{
+    position: relative;
+    height: 12vh;
+    margin: 10px 0;
+    .change--coin{
+
+      width: 60px;
+      height: 60px;
+      box-shadow: 8px 2px 0 rgba(0,0,0,.7);
+      border: 1px solid rgba(0,0,0,.3);
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      margin-top: -30px;
+      transform: rotateY(60deg);
+      z-index: 2;
+      display: none;
+      cursor: pointer;
+    }
+
+    &:before, &:after{
+      content: "";
+      position: absolute;
+
+      height: 100%;
+      top: 0;
+      background-color: #000;
+      border: 4px solid $slotCoinBorder;
+    }
+    &:before{
+      border-right: 0;
+      z-index: 3;
+      left: 10px;
+      width: 8px;
+    }
+    &:after{
+      left: 11px;
+      width: 15px;
+      border-left: 0;
+    }
+
+    .btn_take-change{
+      float: right;
+      height: 50px;
+      @include font-size(14,16,0);
+      text-transform: uppercase;
+      font-weight: bold;
+      background-color: $colorRed;
+      color: $colorYellow;
+      border-color: $colorGray;
+    }
+
+    //If the user has change let's show one coin
+    &.has-change{
+      .change--coin{
+        display: block;
+      }
+    }
+  }
+  .col-7-8{
+    max-width: 220px;
+  }
+}
